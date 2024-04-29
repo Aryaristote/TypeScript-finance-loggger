@@ -86,3 +86,34 @@ type person = { name: string; age: number}
 logDetails = (user: person ) => {
     console.log(`User is:  ${user.name} and age: ${user.age}`);
 }
+
+// INTERFACE 
+interface Person {
+    name: string;
+    age: number;
+    isStudent: boolean;
+}
+
+let person: Person = {
+    name: "John",
+    age: 30,
+    isStudent: true
+};
+
+
+// Unit TYPE
+type Status = "Active" | "Inactive" | "Pending";
+
+function getStatusMessage(status: Status): string {
+    switch (status) {
+        case "Active":
+            return "Account is active";
+        case "Inactive":
+            return "Account is inactive";
+        case "Pending":
+            return "Account is pending approval";
+    }
+}
+
+let userStatus : Status = "Active";
+let message : string = getStatusMessage(userStatus); 

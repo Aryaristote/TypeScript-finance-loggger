@@ -64,3 +64,20 @@ let logDetails;
 logDetails = (user) => {
     console.log(`User is:  ${user.name} and age: ${user.age}`);
 };
+let person = {
+    name: "John",
+    age: 30,
+    isStudent: true
+};
+function getStatusMessage(status) {
+    switch (status) {
+        case "Active":
+            return "Account is active";
+        case "Inactive":
+            return "Account is inactive";
+        case "Pending":
+            return "Account is pending approval";
+    }
+}
+let userStatus = "Active";
+let message = getStatusMessage(userStatus);
