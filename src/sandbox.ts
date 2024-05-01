@@ -10,7 +10,10 @@ var myNature = false;
 var colgs : string[] = []; //Must initialize the array before pushing.
 colgs.push('Kalume');
 
-// Union types
+// Tuples
+let user: [number, string] = [1, 'John'] // Must only have 2 elements and must be int and char.
+
+// Union types or intersection types
 var mixed : ( string | number )[] = []; // Use () when giving type to array only.
 mixed.push('Kalume');
 mixed.push(45);
@@ -18,6 +21,9 @@ mixed.push(45);
     // ---  For normal var.
     var userID;
     userID = "Hgdshsskj123";
+
+    // intersection types can also be
+    let exampleArray : number & string;
 
 
 // Objct types
@@ -99,7 +105,25 @@ let person: Person = {
     age: 30,
     isStudent: true
 };
+    // Using only few props in INTERFACE
+interface Assignment {
+    studentID: number,
+    titles: string,
+    grade: number,
+    varified?: boolean,
+}
+    // Func structure.
+const UpdateAssignment = (assign: Assignment, propToUpdate: Partial<Assignment>): Assignment => {
+    return { ...assign, ...propToUpdate }
+}
 
+const Assign1: Assignment = {
+    studentID: 1,
+    titles: "Math Algorithms",
+    grade: 1,
+}
+    // Updating props from interface.
+console.log(UpdateAssignment(Assign1, { grade: 87 }));
 
 // Unit TYPE
 type Status = "Active" | "Inactive" | "Pending";
