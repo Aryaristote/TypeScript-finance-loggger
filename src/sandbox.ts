@@ -141,3 +141,66 @@ function getStatusMessage(status: Status): string {
 
 let userStatus : Status = "Active";
 let message : string = getStatusMessage(userStatus); 
+
+
+// Record
+const COlorAndValues: Record<string, string> = { //<Key = string, value = string too >
+    Red: "#ff0000", 
+    White: "#fff",
+    Black: "#546bbc",
+    Blue: "#44ffce",
+}
+    // OR 
+    type students = "Sarah" | "John";
+    type letterGrade = "A" | "B" | "C" | "D" | "F";
+
+    const finalGrade : Record< students, letterGrade > = {
+        Sarah: "B",
+        John: "C",
+    }
+
+    // OR Using interface 
+    interface Grade {
+        assign1: number,
+        assign2: number,
+    }
+
+    const gradeData: Record< students, Grade > = {
+        Sarah: { assign1: 56, assign2: 75 },
+        John: { assign1: 46, assign2: 62 }
+    }
+
+
+
+// Async & Await functions
+interface User {
+    id: number;
+    name: string;
+    username: string;
+    email: string;
+}
+  
+    // Function to fetch user data from the Placeholder API
+function fetchUsers(): Promise<User[]> {
+    return fetch('https://jsonplaceholder.typicode.com/users')
+        .then(response => {
+            if (!response.ok) {
+            throw new Error('Failed to fetch users');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Type assertion to ensure that the data fetched matches the User interface
+            return data as User[];
+        });
+}
+    // Example usage
+fetchUsers()
+    .then(users => {
+      console.log('Users:', users);
+      // You can now use the 'users' array with type safety
+    })
+    .catch(error => {
+      console.error('Error fetching users:', error);
+    });
+  
